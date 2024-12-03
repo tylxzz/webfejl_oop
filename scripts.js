@@ -20,10 +20,10 @@ Player.prototype.getTierLevel = function(){
     }
 }
 
-function printTierLevel(playerName, tierLevel) {
-    console.log(playerName + ' is in the ' + tierLevel + ' tier.');
+function printTierLevel(Player) {
+    console.log(Player.nickname + ' is in the ' + Player.getTierLevel() + ' tier.');
 };
 
 const player = new Player('Messi');
 player.play();
-printTierLevel('Lionel Messi', player.getTierLevel());
+printTierLevel(player);
