@@ -30,3 +30,21 @@ function printTierLevel(Player) {
 const player = new Player('Messi');
 player.play();
 printTierLevel(player);
+
+function Person() {
+    this.name = 'Géza';
+}
+
+function getName(Person) {
+    console.log(Person.name);
+}
+
+function Student(school) {
+    this.name = 'Géza';
+    this.school = school;
+}
+
+Object.setPrototypeOf(Person, Student);
+
+const student = new Student('Bolyai');
+getName(student);
