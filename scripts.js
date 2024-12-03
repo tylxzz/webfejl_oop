@@ -31,20 +31,22 @@ const player = new Player('Messi');
 player.play();
 printTierLevel(player);
 
-function Person(name) { 
-    this.name = name;
+class Person { 
+    constructor(name) {
+        this.name = name;
+    }
 }
 
 Person.prototype.getName = function() {
     console.log(this.name);
 }
 
-function Student(name, school) {
-    Person.call(this, name);
-    this.school = school;
+class Student extends Person {
+    constructor(name, school) {
+        super(name);
+        this.school = school;
+    }
 }
-
-Object.setPrototypeOf(Student.prototype, Person.prototype);
 
 const ember = new Person('Géza');
 const tanulo = new Student('Géza', 'Bolyai');
