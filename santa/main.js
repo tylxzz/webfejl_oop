@@ -69,5 +69,7 @@ initTable()
 function checkEventListener(e){
     const row = e.currentTarget.parentElement.parentElement;
     const companionId = row.id;
+    const companion = factory.getMano(companionId);
+    refreshProductList(companion);
     // TODO 10
 }

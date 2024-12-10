@@ -11,6 +11,9 @@ class Factory {
     createID() {
         return this.manoList.length;
     }
+    getMano(id) {
+        return this.manoList[id];
+    }
 }
 
 class Companion {
