@@ -79,6 +79,17 @@ function init() {
         const person = new Person(elem);
         person.render(tbody);
     }
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const Obj = {
+            lastname: controller.lastname,
+            firstname1: controller.firstname1,
+            firstname2: controller.firstname2
+        }
+        const pers = new Person(Obj);
+        pers.render(tbody);
+        form.reset();
+    })
 }
 
 init();
