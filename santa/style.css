@@ -1,0 +1,168 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F0F8FF;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/diamond.png');
+}
+
+/* Header */
+h1, h2 {
+    text-align: center;
+    color: #A52A2A;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Container */
+.row-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+table {
+    width: 48%;
+    margin: 20px;
+    border-collapse: collapse;
+    background-color: #ffebcd;
+    border: 2px solid #8b4513;
+    border-radius: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #8b4513;
+}
+
+th {
+    background-color: #228B22;
+    color: #fff;
+}
+
+td {
+    background-color: #fff;
+}
+
+/* Forms */
+form {
+    background-color: #faebd7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%; /* Increase width of form container */
+    max-width: 600px; /* Max width for responsiveness */
+    margin: 10px; /* Add spacing around the form */
+}
+
+label {
+    font-weight: bold;
+    color: #8b4513;
+}
+
+input, select, button {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 2px solid #8b4513;
+    width: 95%; /* Input fields will still fill the form container */
+}
+
+.row-container:before {
+    content: "🎄";
+    font-size: 3rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.row-container:after {
+    content: "🎅🏼";
+    font-size: 3rem;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+input[type="text"], select {
+    background-color: #fff;
+}
+
+button {
+    background-color: #A52A2A;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #B22222;
+}
+
+/* Christmas Decoration */
+body {
+    background-color: #B0E0E6;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), url('https://www.transparenttextures.com/patterns/lattice.png');
+}
+
+h1 {
+    color: #8B0000;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 40px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #8B4513;
+    font-family: 'Dancing Script', cursive;
+}
+
+table th {
+    background-color: #FF6347;
+}
+
+table td {
+    background-color: #FFF5EE;
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button:before {
+    content: "❄️";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    opacity: 0;
+    animation: snowflake 2s infinite;
+}
+
+@keyframes snowflake {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

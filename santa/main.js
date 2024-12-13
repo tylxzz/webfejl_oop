@@ -32,29 +32,47 @@ document.getElementById('companion').addEventListener('submit',function(e){
     e.preventDefault();
     const form =  e.currentTarget
     addCompanion(form, factory);
+    form.reset();
 });
 
 document.getElementById('product').addEventListener('submit',function(e){
     e.preventDefault();
     const form = e.currentTarget;
-    addProductForm(form, factory)
+    addProductForm(form, factory);
+    form.reset();
 });
+
+document.getElementById('area').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.currentTarget;
+    factory.addArea(form.areaName.value);
+    form.reset();
+})
 
 /**
  * table render
  */
 function initTable(){
+    const uniqueArea = new Set();
+
+    for (let i = 0; i < companionList.length; i++) {
+        uniqueArea.add(companionList[i].area);
+    }
+
+    for (let area of uniqueArea) {
+        factory.addArea(area);
+    }
+
     for(let i = 0; i < companionList.length; i++) {
         const mano = companionList[i];
         const comp = new Companion(i, mano.firstName, mano.lastName, mano.area);
         for(const product of mano.products) {
-            comp.addPrduct(product);
+            comp.addProduct(product);
         }
         console.log(comp)
         factory.addMano(comp);
         console.log(factory);
     }
-    // TODO 6
 }
 
 
@@ -69,5 +87,6 @@ initTable()
 function checkEventListener(e){
     const row = e.currentTarget.parentElement.parentElement;
     const companionId = row.id;
-    // TODO 10
+    const companion = factory.getMano(companionId);
+    refreshProductList(companion);
 }

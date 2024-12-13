@@ -7,6 +7,7 @@ function createRow(companion){
     const table = document.getElementById('companions');
     const tbody = table.querySelector('tbody');
     const tableRow = document.createElement('tr');
+    tableRow.id = companion.id;
     tbody.appendChild(tableRow);
 
    // TODO 7
@@ -39,12 +40,13 @@ function createCell(parentElement){
  * Append a new companion to the selector
  * 
  */
-function appendToSelector(){
+function appendToSelector(companion){
     const productForm = document.getElementById('product')
     const selector = productForm.querySelector('#companionlist');
 
     const option = document.createElement('option');
-    // TODO 11.
+    option.value = companion.id;
+    option.innerHTML = companion.getName();
 
     selector.appendChild(option);
 }
@@ -59,13 +61,18 @@ function appendToSelector(){
 function refreshProductList(companion){ //TODO
 
     const companionName = document.getElementById('companion_name');
-    // TODO 10
     companionName.style.display = 'block';
+    companionName.innerHTML = companion.getName()
     const productTable = document.getElementById('products');
     productTable.style.display = 'table';
     const productTableBody = productTable.querySelector('tbody')
     productTableBody.innerHTML = '';
-    // TODO 10
+    for(const product of companion.products) {
+        const row = document.createElement('tr');
+        const cell = createCell(row);
+        cell.innerHTML = product;
+        productTableBody.appendChild(row);
+    }
 }
 
 /**
@@ -100,5 +107,9 @@ function addProductForm(form, factory){ // TODO
     const productName = form.querySelector('#productname')
     const companionId = selector.value;
     const product = productName.value;
-    // 12
+    
+    if (companionId && productName) {
+        factory.addProductToMano(companionId, product);
+        form.reset();
+    }
 }
