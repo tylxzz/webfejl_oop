@@ -28,7 +28,10 @@ class ArrayList {
     }
     Clear() {
         this.#count = 0
-        this.#state = {}
+        for(const s in this.#state) {
+            delete this.#state[s]
+            delete this[s]
+        }
     }
 }
 
