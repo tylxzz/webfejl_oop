@@ -33,6 +33,14 @@ class ArrayList {
             delete this[s]
         }
     }
+    Contains(element) {
+        for(const s in this.#state) {
+            if(this.#state[s] === element) {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 const alma = {}
