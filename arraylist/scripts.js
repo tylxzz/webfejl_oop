@@ -20,7 +20,10 @@ class ArrayList {
             },
             set: function(value) {
                 this.#state[index] = value
-            }})
+            },
+            enumerable: true,
+            configurable: true
+        })
         this.#count++
     }
     Clear() {
