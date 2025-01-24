@@ -4,21 +4,23 @@ class ArrayList {
      */
     #count
     #state
+    #arraytable
     get Count() {
         return this.#count
     }
-    constructor() {
+    constructor(array = undefined) {
         this.#count = 0
         this.#state = {}
+        this.#arraytable
     }
     Add(element) {
         const index = this.#count
         this.#state[index] = element
         Object.defineProperty(this, index, {
-            get: function() {
+            get: () => {
                 return this.#state[index]
             },
-            set: function(value) {
+            set: (value) => {
                 this.#state[index] = value
             },
             enumerable: true,
@@ -42,6 +44,49 @@ class ArrayList {
         return false
     }
 }
+
+class TableHTMLArray 
+extends HTMLElement {
+    #tbody
+    constructor() {
+        super()
+    }
+    connectedCallback() {
+        const table = document.createElement('table')
+        this.appendChild(table)
+
+        const thead = document.createElement('thead')
+        table.appendChild(thead)
+
+        this.#tbody = document.createElement('tbody')
+        table.appendChild(this.#tbody)
+    }
+    /**
+     * 
+     * @param {{nev: String, eletkor: Number}} person 
+     */
+    addPersonRow(person) {
+        const tr = document.createElement('tr')
+        this.#tbody.appendChild(tr)
+
+        const td1 = document.createElement('td')
+        const td2 = document.createElement('td')
+
+        td1.innerHTML = person.nev
+        td2.innerHTML = person.eletkor
+
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+    }
+}
+customElements.define('array-table', TableHTMLArray)
+const dingdong = new TableHTMLArray()
+document.body.appendChild(dingdong)
+dingdong.addPersonRow({nev: 'Lali', eletkor: 23})
+dingdong.addPersonRow({nev: 'Feri', eletkor: 12})
+dingdong.addPersonRow({nev: 'Zoli', eletkor: 42})
+dingdong.addPersonRow({nev: 'Jani', eletkor: 43})
+dingdong.addPersonRow({nev: 'Pisti', eletkor: 23})
 
 const alma = {}
 Object.defineProperty(alma, 'nev', {value: 'Ferenc', writable: true})
