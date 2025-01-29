@@ -11,7 +11,7 @@ class ArrayList {
     constructor(array = undefined) {
         this.#count = 0
         this.#state = {}
-        this.#arraytable
+        this.#arraytable = array
     }
     Add(element) {
         const index = this.#count
@@ -27,6 +27,9 @@ class ArrayList {
             configurable: true
         })
         this.#count++
+        if(this.#arraytable) {
+            this.#arraytable.addPersonRow(element)
+        }
     }
     Clear() {
         this.#count = 0
@@ -113,3 +116,17 @@ console.log(array.Contains(3))
 console.log(array.Contains(6))
 console.log(array.Clear())
 console.log(array.Count)
+
+const button = document.createElement('button')
+button.innerText = 'Új személy hozzáadása';
+document.body.appendChild(button)
+
+button.addEventListener('click',  function(e) {
+    e.preventDefault()
+
+    const newPerson = {
+        nev: 'Ismeretlen',
+        eletkor: Math.floor(Math.random() * 50)
+    }
+    dingdong.addPersonRow(newPerson)
+})
