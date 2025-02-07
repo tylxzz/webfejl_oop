@@ -62,6 +62,15 @@ class DataManager {
         }
         this.#updatecallback(result)
     }
+    fiter(filterCallback) {
+        const result = []
+        for(const person of this.#array) {
+            if(filterCallback(person)) {
+                result.push(elem)
+            }
+        }
+        this.#updatecallback(result)
+    }
 }
 
 class DataTable {
@@ -98,3 +107,24 @@ const dm = new DataManager([{nev: 'Sigma', eletkor: 69}, {nev: 'Ohio', eletkor: 
 console.log(dm)
 
 const dt = new DataTable(dm)
+
+const input = document.createElement('input')
+input.type = "file"
+document.body.appendChild(input)
+
+dm.filter
+
+input.addEventListener('change', (e) => {
+    const file = e.target.files[0]
+    const fileReader = new FileReader()
+    fileReader.readAsText(file)
+    fileReader.onload = () => {
+        const fileContent = fileReader.result
+        const stringArray = fileContent.split('\n')
+        for(const elem of stringArray) {
+            const data = elem.split(';')
+            const person = {nev: data[0], eletkor: Number(data[1])}
+            dm.add(person)
+        }
+    }
+})
