@@ -61,5 +61,7 @@ for(const element of array) {
     // managerArray.push(new Question(element.question, element.answers, element.rightAnswer))
 }
 
-const questionArea = new QuestionArea('question')
-const answerArea = new AnswerArea('answer-area')
+const manager = new Manager(managerArray)
+const questionArea = new QuestionArea('question', manager)
+const answerArea = new AnswerArea('answer-area', manager)
+manager.start()
